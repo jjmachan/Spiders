@@ -1,6 +1,10 @@
 from html.parser import HTMLParser  
 from urllib.request import urlopen  
 from urllib import parse
+import logging
+
+logger = logging.getLogger(__name__)
+logger.debug("start")
 
 # We are going to create a class called LinkParser that inherits some
 # methods from HTMLParser which is why it is passed into the definition
@@ -74,8 +78,8 @@ def spider(url, word, maxPages):
                 foundWord = True
                 # Add the pages that we visited to the end of our collection
                 # of pages to visit:
-                pagesToVisit = pagesToVisit + links
                 print(" **Success!**")
+            pagesToVisit = pagesToVisit + links
         except:
             print(" **Failed!**")
     if foundWord:
@@ -83,4 +87,6 @@ def spider(url, word, maxPages):
     else:
         print("Word never found")
 
-spider("https://stackoverflow.com/questions/71151/html-parser-in-python", "django", 6)
+usrWord = input("Enter the word to check: ")
+numPages = input("Maximum number of pages to check: ")
+spider("https://stackoverflow.com/questions/71151/html-parser-in-python", usrWord, numPages)
