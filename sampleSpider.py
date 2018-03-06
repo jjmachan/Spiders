@@ -88,5 +88,5 @@ def spider(url, word, maxPages):
         print("Word never found")
 
 usrWord = input("Enter the word to check: ")
-numPages = input("Maximum number of pages to check: ")
+numPages = int(input("Maximum number of pages to check: "))
 spider("https://stackoverflow.com/questions/71151/html-parser-in-python", usrWord, numPages)
